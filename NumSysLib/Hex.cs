@@ -1,7 +1,1 @@
-namespace NumSysLib
-{
-    internal class Hex : ConverterBase
-    {
-
-    }
-}
+namespace NumSysLib;

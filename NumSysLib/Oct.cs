@@ -1,7 +1,1 @@
-namespace NumSysLib
-{
-    internal class Oct : ConverterBase
-    {
-
-    }
-}
+namespace NumSysLib;

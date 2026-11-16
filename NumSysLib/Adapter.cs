@@ -1,6 +1,1 @@
-namespace NumSysLib
-{
-    public class Adapter
-    {
-    }
-}
+namespace NumSysLib;
