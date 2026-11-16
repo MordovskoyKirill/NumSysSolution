@@ -1,5 +1,5 @@
 namespace NumSysLib;
-/*abstract internal*/public class ConverterBase {
+ /*abstract internal*/public class ConverterBase {
     /* internal protected */public string ToBase10(string digitTo, int fromBase)
     {
         int rangeInt = digitTo.Length;

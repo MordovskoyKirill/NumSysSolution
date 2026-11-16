@@ -1,5 +1,5 @@
 namespace NumSysLib;
-internal class Binary : ConverterBase
+/*internal*/ public class Binary : ConverterBase
 {
     private string _digitTo = string.Empty;
     private readonly int _baseSystem = 2;
@@ -24,12 +24,12 @@ internal class Binary : ConverterBase
                 _digitTo = value;
         }
     }
-    internal string ConvertTo10(string value)
+    /*internal*/public string ConvertTo10(string value)
     {
         DigitTo = value;
         return ToBase10(DigitTo, _baseSystem);
     }
-    internal string ConvertFrom10(string decimalValue)
+    /*internal*/public string ConvertFrom10(string decimalValue)
     {
         return FromBase10(decimalValue, _baseSystem);
     }
