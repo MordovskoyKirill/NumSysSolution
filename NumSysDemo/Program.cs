@@ -1,11 +1,19 @@
 ﻿using NumSysLib;
 
-var converterBinary = new Binary();
-var converterOct = new Oct();
-var converterHex = new Hex();
-Console.WriteLine(converterBinary.ConvertTo10("1100"));
-Console.WriteLine(converterBinary.ConvertFrom10("12"));
-Console.WriteLine(converterOct.ConvertTo10("1100"));
-Console.WriteLine(converterOct.ConvertFrom10("576"));
-Console.WriteLine(converterHex.ConvertTo10("1a"));
-Console.WriteLine(converterHex.ConvertFrom10("26"));
+Adapter adapter = new Adapter();
+
+Console.WriteLine(adapter.Convert("1010", 2, 10));
+
+Console.WriteLine(adapter.Convert("10", 10, 2));
+
+Console.WriteLine(adapter.Convert("77", 8, 10));
+
+Console.WriteLine(adapter.Convert("63", 10, 8));
+
+Console.WriteLine(adapter.Convert("FF", 16, 10));
+
+Console.WriteLine(adapter.Convert("255", 10, 16));
+
+Console.WriteLine(adapter.Convert("11111111", 2, 16));
+
+Console.WriteLine(adapter.Convert("FF", 16, 2));

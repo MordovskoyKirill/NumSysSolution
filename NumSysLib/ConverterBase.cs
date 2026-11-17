@@ -1,40 +1,81 @@
 namespace NumSysLib;
- /*abstract internal*/public class ConverterBase {
-    /* internal protected */public string ToBase10(string digitTo, int fromBase)
-    {
-        int rangeInt = digitTo.Length;
-        long[] l = new long[rangeInt];
-        string hexChars = "0123456789ABCDEF";
 
-        for (int i = 0; i < rangeInt; i++)
-        {
-            char currentChar = char.ToUpper(digitTo[rangeInt - 1 - i]);
-            long a = hexChars.IndexOf(currentChar);
-            l[i] = a * (long)Math.Pow(fromBase, i);
-        }
-        long decimalValue = l.Sum();
-        return Convert.ToString(decimalValue);
+internal abstract class ConverterBase
+{
+    protected int BaseSystem;
+
+    protected ConverterBase(int baseSystem)
+    {
+        BaseSystem = baseSystem;
     }
-    /* internal protected */ public string FromBase10(string digitFrom, int toBase)
+
+    internal string Convert(string value, int toBase)
     {
-        long currentDigit = Convert.ToInt64(digitFrom);
-        List<long> l = new List<long>();
-        
-        while (currentDigit > 0)
-        {
-            long newDigit = currentDigit % toBase;
-            l.Add(newDigit);
-            currentDigit /= toBase;
-        }
-        l.Reverse();
+        return ConvertNumber(value, BaseSystem, toBase);
+    }
 
-        const string hexChars = "0123456789ABCDEF";
-        string newValue = "";
+    internal static void CheckBase(int numberBase)
+    {
+        if (numberBase < 2 || numberBase > 16)
+            throw new ArgumentException("Основание должно быть от 2 до 16");
+    }
 
-        foreach (long digit in l)
+    internal static string CheckValue(string value, int numberBase)
+    {
+        CheckBase(numberBase);
+
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException("Число не может быть пустым");
+
+        value = value.ToUpperInvariant();
+
+        string digits = "0123456789ABCDEF";
+
+        foreach (char c in value)
         {
-            newValue += hexChars[(int)digit];
+            int digit = digits.IndexOf(c);
+
+            if (digit == -1 || digit >= numberBase)
+                throw new ArgumentException("Ошибка ввода данных, проверьте число");
         }
-        return newValue;
+
+        return value;
+    }
+
+    internal static string ConvertNumber(string value, int fromBase, int toBase)
+    {
+        value = CheckValue(value, fromBase);
+        CheckBase(toBase);
+
+        string symbols = "0123456789ABCDEF";
+
+        List<int> digits = new List<int>();
+
+        foreach (char c in value)
+            digits.Add(symbols.IndexOf(c));
+
+        string result = "";
+
+        while (digits.Count > 0)
+        {
+            List<int> quotient = new List<int>();
+            int remainder = 0;
+
+            foreach (int digit in digits)
+            {
+                int current = remainder * fromBase + digit;
+
+                int part = current / toBase;
+                remainder = current % toBase;
+
+                if (quotient.Count > 0 || part != 0)
+                    quotient.Add(part);
+            }
+
+            result = symbols[remainder] + result;
+            digits = quotient;
+        }
+
+        return result;
     }
 }
