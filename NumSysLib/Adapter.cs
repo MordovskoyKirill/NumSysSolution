@@ -11,17 +11,49 @@ public class Adapter
         get { return value; }
         set
         {
-            this.value = ConverterBase.CheckValue(value, FromBase);
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Введите число");
+
+            string text = value.ToUpperInvariant();
+            string digits = text;
+
+            if (digits[0] == '-' || digits[0] == '+')
+                digits = digits.Substring(1);
+
+            if (digits.Length == 0)
+                throw new ArgumentException("Введите число после знака");
+
+            if (FromBase == 2)
+                new Binary().CheckValue = text;
+
+            else if (FromBase == 8)
+                new Oct().CheckValue = text;
+
+            else if (FromBase == 16)
+                new Hex().CheckValue = text;
+
+            else
+            {
+                string symbols = "0123456789ABCDEF";
+
+                foreach (char c in digits)
+                {
+                    int digit = symbols.IndexOf(c);
+
+                    if (digit == -1 || digit >= FromBase)
+                        throw new ArgumentException("Ошибка ввода числа");
+                }
+            }
+
+            this.value = text;
         }
     }
-
     public int FromBase
     {
         get { return fromBase; }
         set
         {
             ConverterBase.CheckBase(value);
-            ConverterBase.CheckValue(Value, value);
             fromBase = value;
         }
     }
@@ -38,7 +70,6 @@ public class Adapter
 
     public string Convert(string value, int fromBase, int toBase)
     {
-        Value = "0";
         FromBase = fromBase;
         ToBase = toBase;
         Value = value;
