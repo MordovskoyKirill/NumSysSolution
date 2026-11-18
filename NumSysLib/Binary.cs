@@ -21,9 +21,6 @@ internal class Binary : ConverterBase
             if (value[0] == '-')
                 value = value.Substring(1);
 
-            if (value.Length == 0)
-                throw new ArgumentException("Введите число после знака");
-
             foreach (char c in value)
             {
                 if (c != '0' && c != '1')

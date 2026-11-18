@@ -21,13 +21,6 @@ public class Adapter
                 throw new ArgumentException("Введите число");
 
             string text = value.ToUpperInvariant();
-            string digits = text;
-
-            if (digits[0] == '-' || digits[0] == '+')
-                digits = digits.Substring(1);
-
-            if (digits.Length == 0)
-                throw new ArgumentException("Введите число после знака");
 
             if (FromBase == 2)
                 new Binary().Number = text;
@@ -37,19 +30,6 @@ public class Adapter
 
             else if (FromBase == 16)
                 new Hex().Number = text;
-
-            else
-            {
-                string symbols = "0123456789ABCDEF";
-
-                foreach (char c in digits)
-                {
-                    int digit = symbols.IndexOf(c);
-
-                    if (digit == -1 || digit >= FromBase)
-                        throw new ArgumentException("Ошибка ввода числа");
-                }
-            }
 
             this.value = text;
         }

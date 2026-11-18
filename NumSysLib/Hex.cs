@@ -16,14 +16,11 @@ internal class Hex : ConverterBase
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("Введите число");
 
-            value = value.ToUpperInvariant();
             string original = value;
 
             if (value[0] == '-')
                 value = value.Substring(1);
 
-            if (value.Length == 0)
-                throw new ArgumentException("Введите число после знака");
 
             foreach (char c in value)
             {
