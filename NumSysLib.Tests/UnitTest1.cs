@@ -6,7 +6,7 @@ namespace NumSysLib.Tests
     public class BinaryTests
     {
         [Fact]
-        public void Convert_Binary() // Базовый перевод
+        public void Convert_BinaryTo10() // Базовый перевод 2-10
         {
             var adapter = new Adapter();
             string input = "1101";
@@ -18,13 +18,61 @@ namespace NumSysLib.Tests
         }
 
         [Fact]
-        public void Convert_Oct() // Базовый перевод
+        public void Convert_OctTo10() // Базовый перевод 8-10
         {
             var adapter = new Adapter();
             string input = "77";
             string expected = "63";
 
             string actual = adapter.Convert(input, 8, 10);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Convert_HexTo10() // Базовый перевод 16-10
+        {
+            var adapter = new Adapter();
+            string input = "AA";
+            string expected = "170";
+
+            string actual = adapter.Convert(input, 16, 10);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Convert_10ToBinary() // Базовый перевод 10-2
+        {
+            var adapter = new Adapter();
+            string input = "13";
+            string expected = "1101";
+
+            string actual = adapter.Convert(input, 10, 2);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Convert_10ToOct() // Базовый перевод 10-8
+        {
+            var adapter = new Adapter();
+            string input = "63";
+            string expected = "77";
+
+            string actual = adapter.Convert(input, 10, 8);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Convert_10ToHex() // Базовый перевод 10-16
+        {
+            var adapter = new Adapter();
+            string input = "170";
+            string expected = "AA";
+
+            string actual = adapter.Convert(input, 10, 16);
 
             Assert.Equal(expected, actual);
         }

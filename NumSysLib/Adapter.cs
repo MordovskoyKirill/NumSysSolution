@@ -1,11 +1,17 @@
 namespace NumSysLib;
 
+/// <summary>
+/// Класс для перевода чисел между системами счисления
+/// </summary>
 public class Adapter
 {
     private string value = "0";
     private int fromBase = 10;
     private int toBase = 2;
 
+    /// <summary>
+    /// Число, которое необходимо перевести
+    /// </summary>
     public string Value
     {
         get { return value; }
@@ -48,6 +54,10 @@ public class Adapter
             this.value = text;
         }
     }
+
+    /// <summary>
+    /// Основание исходной системы счисления
+    /// </summary>
     public int FromBase
     {
         get { return fromBase; }
@@ -58,6 +68,9 @@ public class Adapter
         }
     }
 
+    /// <summary>
+    /// Основание системы счисления
+    /// </summary>
     public int ToBase
     {
         get { return toBase; }
@@ -68,6 +81,9 @@ public class Adapter
         }
     }
 
+    /// <summary>
+    /// Конвертирует систему счисления
+    /// </summary>
     public string Convert(string value, int fromBase, int toBase)
     {
         FromBase = fromBase;
