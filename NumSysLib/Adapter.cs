@@ -38,6 +38,7 @@ public class Adapter
 
     public string Convert(string value, int fromBase, int toBase)
     {
+        Value = "0";
         FromBase = fromBase;
         ToBase = toBase;
         Value = value;

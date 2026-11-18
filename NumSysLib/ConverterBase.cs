@@ -1,3 +1,4 @@
+
 namespace NumSysLib;
 
 internal abstract class ConverterBase
@@ -29,11 +30,19 @@ internal abstract class ConverterBase
 
         value = value.ToUpperInvariant();
 
+        int start = 0;
+
+        if (value[0] == '-' || value[0] == '+')
+            start = 1;
+
+        if (start == value.Length)
+            throw new ArgumentException("Введите число после знака");
+
         string digits = "0123456789ABCDEF";
 
-        foreach (char c in value)
+        for (int i = start; i < value.Length; i++)
         {
-            int digit = digits.IndexOf(c);
+            int digit = digits.IndexOf(value[i]);
 
             if (digit == -1 || digit >= numberBase)
                 throw new ArgumentException("Ошибка ввода данных, проверьте число");
@@ -46,6 +55,11 @@ internal abstract class ConverterBase
     {
         value = CheckValue(value, fromBase);
         CheckBase(toBase);
+
+        bool negative = value[0] == '-';
+
+        if (value[0] == '-' || value[0] == '+')
+            value = value.Substring(1);
 
         string symbols = "0123456789ABCDEF";
 
@@ -75,6 +89,12 @@ internal abstract class ConverterBase
             result = symbols[remainder] + result;
             digits = quotient;
         }
+
+        if (result == "")
+            result = "0";
+
+        if (negative && result != "0")
+            result = "-" + result;
 
         return result;
     }
