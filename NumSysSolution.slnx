@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="NumSysDemo/NumSysDemo.csproj" />
+  <Project Path="NumSysLib.Tests/NumSysLib.Tests.csproj" />
   <Project Path="NumSysLib/NumSysLib.csproj" />
 </Solution>
