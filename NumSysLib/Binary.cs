@@ -8,7 +8,7 @@ internal class Binary : ConverterBase
     {
     }
 
-    internal override string CheckValue
+    internal override string Number
     {
         get { return number; }
         set

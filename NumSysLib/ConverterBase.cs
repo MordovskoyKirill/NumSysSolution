@@ -10,7 +10,7 @@ internal abstract class ConverterBase
         BaseSystem = baseSystem;
     }
 
-    internal abstract string CheckValue { get; set; }
+    internal abstract string Number { get; set; }
     internal string Convert(string value, int toBase)
     {
         return ConvertNumber(value, BaseSystem, toBase);

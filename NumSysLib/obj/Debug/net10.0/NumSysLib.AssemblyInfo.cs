@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NumSysLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e697a0d4a318515e0b5114982ae8670e08d5a765")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+237f6784567d66e5a2a3e4875f2b57d5de830d7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NumSysLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NumSysLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

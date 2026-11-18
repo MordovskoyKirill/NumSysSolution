@@ -24,13 +24,13 @@ public class Adapter
                 throw new ArgumentException("Введите число после знака");
 
             if (FromBase == 2)
-                new Binary().CheckValue = text;
+                new Binary().Number = text;
 
             else if (FromBase == 8)
-                new Oct().CheckValue = text;
+                new Oct().Number = text;
 
             else if (FromBase == 16)
-                new Hex().CheckValue = text;
+                new Hex().Number = text;
 
             else
             {

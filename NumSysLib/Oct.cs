@@ -8,7 +8,7 @@ internal class Oct : ConverterBase
     {
     }
 
-    internal override string CheckValue
+    internal override string Number
     {
         get { return number; }
         set
