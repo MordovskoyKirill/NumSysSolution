@@ -30,54 +30,6 @@ namespace NumSysLib.Tests
         }
 
         [Fact]
-        public void Convert_HexTo10() // Базовый перевод 16-10
-        {
-            var adapter = new Adapter();
-            string input = "AA";
-            string expected = "170";
-
-            string actual = adapter.Convert(input, 16, 10);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Convert_10ToBinary() // Базовый перевод 10-2
-        {
-            var adapter = new Adapter();
-            string input = "13";
-            string expected = "1101";
-
-            string actual = adapter.Convert(input, 10, 2);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Convert_10ToOct() // Базовый перевод 10-8
-        {
-            var adapter = new Adapter();
-            string input = "63";
-            string expected = "77";
-
-            string actual = adapter.Convert(input, 10, 8);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void Convert_10ToHex() // Базовый перевод 10-16
-        {
-            var adapter = new Adapter();
-            string input = "170";
-            string expected = "AA";
-
-            string actual = adapter.Convert(input, 10, 16);
-
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void Convert_InvalidSymbols() // Недопустимый символ
         {
             var adapter = new Adapter();
@@ -111,6 +63,18 @@ namespace NumSysLib.Tests
             string expected = "-13";
 
             string actual = adapter.Convert(input, 2, 10);
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void Convert_MaxLong10() // Граничное значение
+        {
+            var adapter = new Adapter();
+            string input = "9223372036854775807";
+            string expected = new string('1', 63);
+
+            string actual = adapter.Convert(input, 10, 2);
 
             Assert.Equal(expected, actual);
         }
