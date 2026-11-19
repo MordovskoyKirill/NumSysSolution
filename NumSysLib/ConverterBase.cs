@@ -27,8 +27,7 @@ internal abstract class ConverterBase
     {
         bool negative = value[0] == '-';
 
-        if (value[0] == '-' || value[0] == '+')
-            value = value.Substring(1);
+        if (negative) value = value.Substring(1);
 
         string symbols = "0123456789ABCDEF";
 
