@@ -17,9 +17,6 @@ public class Adapter
         get { return value; }
         set
         {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Введите число");
-
             string text = value.ToUpperInvariant();
 
             if (FromBase == 2)
